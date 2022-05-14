@@ -8,7 +8,7 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\session;
 use Illuminate\Support\Facades\DB;
 use App\Models\Order;
-class ProductController extends InterfaceController
+class ProductController extends Controller
 {
     public $dataIndex; 
     public $dataDetail;
@@ -27,6 +27,10 @@ class ProductController extends InterfaceController
         ->get();
         return view('search',['products'=>$dataSearch]);
         // return $req->query();
+    }
+    function z($id){
+       //الداتا بتاعت اي دي معين
+        return '1';
     }
     // function index1(){
     //     $product= new Product;
