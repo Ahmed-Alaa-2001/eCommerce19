@@ -28,7 +28,7 @@ Route::get('/logout', function () {
 Route::view('/register','register');
 Route::post('/login',[UserController::class,'login']);//(بتستعيها من ريكوست)تاخد البيانات الي جية من الفورم وتحطها في الداتا بيز
 Route::post('/register',[UserController::class,'register']);
-Route::get('/',[ProductController::class,'index']);
+Route::get('/',[ProductController::class,'Home']);
 Route::get('detail/{id}',[ProductController::class,'detail']);
 Route::get('search',[ProductController::class,'search']);
 Route::post('/add_to_cart',[CartController::class,'addToCart']);//(بتستعيها من ريكوست)تاخد البيانات الي جية من الفورم وتحطها في الداتا بيز
