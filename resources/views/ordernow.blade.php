@@ -1,3 +1,8 @@
+<?php
+    use App\Http\Controllers\OrderController;
+    $ordernow=new OrderController;
+    $total=$ordernow->price();
+?>
 @extends('layout')
 @section("content")
 <div class="custom-product">

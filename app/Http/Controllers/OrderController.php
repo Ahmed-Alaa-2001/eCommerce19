@@ -8,7 +8,7 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\session;
 use Illuminate\Support\Facades\DB;
 use App\Models\Order;
-class OrderController 
+class OrderController  extends OperationsController
 {
     public $userIdOrderNow;
     public $userIdorderPlace;
@@ -16,15 +16,7 @@ class OrderController
     public $total;
     public $allCart;
     function ordernow(){
-        if(Session::has('user')){
-            $userIdOrderNow=Session::get('user')['id'];
-            $total= DB::table('cart')
-            ->join('products','cart.product_id','=','products.id')
-            ->where('cart.user_id',$userIdOrderNow)
-            ->sum('products.price');
-            return view('ordernow',['total'=>$total]);
-        }
-        return redirect('/login');
+        return view('ordernow');
     }
     function orderPlace(Request $req)
     {
@@ -41,7 +33,7 @@ class OrderController
             $order->save();
             Cart::where('user_id',$userIdorderPlace)->delete(); 
         }
-        $req->input();
+       // $req->input();
         return redirect('/');
     }
     function myOrders(){

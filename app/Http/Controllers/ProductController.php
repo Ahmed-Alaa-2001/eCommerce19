@@ -28,10 +28,10 @@ class ProductController extends Controller
         return view('search',['products'=>$dataSearch]);
         // return $req->query();
     }
-    function z($id){
-       //الداتا بتاعت اي دي معين
-        return '1';
-    }
+    // function z($id){
+    //    //الداتا بتاعت اي دي معين
+    //     return '1';
+    // }
     // function index1(){
     //     $product= new Product;
     //     $x=$product->price;

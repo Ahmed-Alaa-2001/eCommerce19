@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 
 
-class CartController extends ProductController
+class CartController implements CartInterfaceController
 {
-   /* public $userIdCartItem;
+    /* public $userIdCartItem;
     public $userIdCartlist;
     public $userId;*/
     function addToCart(Request $req){
@@ -22,7 +22,6 @@ class CartController extends ProductController
             $cart->product_id=$req->product_id;
             $cart->save();
             return redirect('/');
-
         }
         else
             return redirect('/login');
@@ -36,7 +35,7 @@ class CartController extends ProductController
             $userIdCartlist=Session::get('user')['id'];
             $products= DB::table('cart')
             ->join('products','cart.product_id','=','products.id')
-         //   ->where('cart.user_id',$userIdCartlist)
+            ->where('cart.user_id',$userIdCartlist)
             ->select('products.*','cart.id as cart_id')
             ->get();
             return view('cartlist',['products'=>$products]);
