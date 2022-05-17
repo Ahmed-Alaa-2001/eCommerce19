@@ -37,6 +37,6 @@ Route::get('/cartlist',[CartController::class,'cartlist']);//(بتستعيها �
 Route::get('removecart/{id}/{x}',[CartController::class,'aboutDelete']);
 Route::get('removeOrder/{id}/{x}',[CartController::class,'aboutDelete']);
 Route::get('ordernow',[OrderController::class,'ordernow']);
-Route::post("orderplace",[OrderController::class,'orderPlace']);
+Route::post("orderplace",[OrderController::class,'add']);
 Route::get('myorders',[OrderController::class,'myOrders']);
 

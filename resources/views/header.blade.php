@@ -7,12 +7,12 @@
 ?>
 
 <nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Trend</a>
+    <div class="container-fluid header">
+        <a class="navbar-brand" href="#">Tech</a>
   
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li class="active"><a id="home"href="/">Home</a></li>
             <li><a href="/myorders">Orders</a></li>
         </ul>
         <form action="/search" class="navbar-form navbar-left">
