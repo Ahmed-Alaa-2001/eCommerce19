@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <a href="/removeOrder/{{$item->orders_id}}" class="btn btn-warning" >Remove from Order</a>
+                <a href="/removeOrder/{{$item->orders_id}}/{{1}}" class="btn btn-warning" >Remove from Order</a>
             </div>
             </div>
             @endforeach

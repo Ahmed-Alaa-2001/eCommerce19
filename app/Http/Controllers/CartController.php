@@ -30,6 +30,20 @@ class CartController  extends deleteController implements deleteInterfaceControl
         $userIdCartItem=Session::get('user')['id'];
         return Cart::where('user_id',$userIdCartItem)->count();
     }
+    function aboutDelete($id,$state){
+        if($state==0){
+            $delete=new deleteController;
+            $deletecart=new CartController;
+            $delete->deleteItem($deletecart,$id);
+            return redirect('cartlist');
+        }
+        if($state==1){
+            $delete=new deleteController;
+            $deleteorder=new OrderController;
+            $delete->deleteItem($deleteorder,$id);
+            return redirect('myorders');
+        }
+    }
     function cartlist(){
         if(Session::has('user')){
             $userIdCartlist=Session::get('user')['id'];

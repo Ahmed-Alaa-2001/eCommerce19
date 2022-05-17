@@ -8,7 +8,7 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\session;
 use Illuminate\Support\Facades\DB;
 use App\Models\Order;
-class OrderController  extends OperationsController implements deleteInterfaceController
+class OrderController  extends OperationsController implements deleteInterfaceController,liskovController
 {
     public $userIdOrderNow;
     public $userIdorderPlace;
@@ -23,14 +23,14 @@ class OrderController  extends OperationsController implements deleteInterfaceCo
         $userIdorderPlace=Session::get('user')['id'];
         $allCart= Cart::where('user_id',$userIdorderPlace)->get();
         foreach($allCart as $cart){
-            $order= new Order;
-            $order->product_id=$cart['product_id'];
-            $order->user_id=$cart['user_id'];
-            $order->status="pending";
-            $order->payment_method=$req->payment;
-            $order->payment_status="pending";
-            $order->address=$req->address;
-            $order->save();
+            $this->order= new Order;
+            $this->order->product_id=$cart['product_id'];
+            $this->order->user_id=$cart['user_id'];
+            $this->order->status="pending";
+            $this->order->payment_method=$req->payment;
+            $this->order->payment_status="pending";
+            $this->order->address=$req->address;
+            $this->order->save();
             Cart::where('user_id',$userIdorderPlace)->delete(); 
         }
        // $req->input();
@@ -38,13 +38,13 @@ class OrderController  extends OperationsController implements deleteInterfaceCo
     }
     function myOrders(){
         if(Session::has('user')){
-            $userIdmyOrders=Session::get('user')['id'];
-            $orders= DB::table('orders')
+            $this->userIdmyOrders=Session::get('user')['id'];
+            $this->orders= DB::table('orders')
             ->join('products','orders.product_id','=','products.id')
-            ->where('orders.user_id',$userIdmyOrders)
+            ->where('orders.user_id',$this->userIdmyOrders)
             ->select('products.*','orders.id as orders_id')
             ->get();
-            return view('myorders',['orders'=>$orders]);
+            return view('myorders',['orders'=>$this->orders]);
         }
         return redirect('/login');
     }

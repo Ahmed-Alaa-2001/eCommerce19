@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\session;
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,9 @@ Route::get('detail/{id}',[ProductController::class,'detail']);
 Route::get('search',[ProductController::class,'search']);
 Route::post('/add_to_cart',[CartController::class,'add']);//(بتستعيها من ريكوست)تاخد البيانات الي جية من الفورم وتحطها في الداتا بيز
 Route::get('/cartlist',[CartController::class,'cartlist']);//(بتستعيها من ريكوست)تاخد البيانات الي جية من الفورم وتحطها في الداتا بيز
-Route::get('removecart/{id}',[CartController::class,'remove']);
-Route::get('removeOrder/{id}',[OrderController::class,'remove']);
+Route::get('removecart/{id}/{x}',[CartController::class,'aboutDelete']);
+Route::get('removeOrder/{id}/{x}',[CartController::class,'aboutDelete']);
 Route::get('ordernow',[OrderController::class,'ordernow']);
-Route::post("orderplace",[OrderController::class,'add']);
+Route::post("orderplace",[OrderController::class,'orderPlace']);
 Route::get('myorders',[OrderController::class,'myOrders']);
 
