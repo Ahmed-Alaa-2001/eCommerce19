@@ -7,6 +7,8 @@ use App\Models\User;//check email & pass match
 class UserController extends Controller
 {
     public $user;
+    public $userRegister;
+    public $emailRegister;
     function login(Request $req){
         $user= User::where(['email'=>$req->email])->first();
         if(!$user || !Hash::check($req->password,$user->password)){
