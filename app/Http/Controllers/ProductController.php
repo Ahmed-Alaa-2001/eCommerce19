@@ -8,7 +8,7 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\session;
 use Illuminate\Support\Facades\DB;
 use App\Models\Order;
-class ProductController extends Controller
+class ProductController implements productInterfaceController
 {
     public $dataIndex; 
     public $dataDetail;
