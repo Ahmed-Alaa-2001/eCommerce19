@@ -15,10 +15,13 @@
                 <div class="">
                     <h2>Name : {{$item->name}}</h2>
                     <h5>Delivery Status : {{$item->description}}</h5>
-                    <h5>Address : {{$item->address}}</h5>
+                    {{-- <h5>Address : {{$item->address}}</h5>
                     <h5>payment status : {{$item->payment_status}}</h5>
-                    <h5>Payment Method : {{$item->payment_method}}</h5>
+                    <h5>Payment Method : {{$item->payment_method}}</h5> --}}
                 </div>
+            </div>
+            <div class="col-sm-3">
+                <a href="/removeOrder/{{$item->orders_id}}" class="btn btn-warning" >Remove from Order</a>
             </div>
             </div>
             @endforeach

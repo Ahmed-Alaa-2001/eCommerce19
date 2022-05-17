@@ -8,7 +8,7 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\session;
 use Illuminate\Support\Facades\DB;
 use App\Models\Order;
-class OrderController  extends OperationsController
+class OrderController  extends OperationsController implements deleteInterfaceController
 {
     public $userIdOrderNow;
     public $userIdorderPlace;
@@ -18,7 +18,7 @@ class OrderController  extends OperationsController
     function ordernow(){
         return view('ordernow');
     }
-    function orderPlace(Request $req)
+    function add(Request $req)
     {
         $userIdorderPlace=Session::get('user')['id'];
         $allCart= Cart::where('user_id',$userIdorderPlace)->get();
@@ -42,9 +42,14 @@ class OrderController  extends OperationsController
             $orders= DB::table('orders')
             ->join('products','orders.product_id','=','products.id')
             ->where('orders.user_id',$userIdmyOrders)
+            ->select('products.*','orders.id as orders_id')
             ->get();
             return view('myorders',['orders'=>$orders]);
         }
         return redirect('/login');
+    }
+    function remove($id){
+        Order::destroy($id);
+        return redirect('myorders');
     }
 }

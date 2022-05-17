@@ -13,12 +13,12 @@ class OperationsController extends Controller
 {
     function price(){
         if(Session::has('user')){
-            $userIdOrderNow=Session::get('user')['id'];
-            $total= DB::table('cart')
+            $this->userIdOrderNow=Session::get('user')['id'];
+            $this->total= DB::table('cart')
             ->join('products','cart.product_id','=','products.id')
-            ->where('cart.user_id',$userIdOrderNow)
+            ->where('cart.user_id',$this->userIdOrderNow)
             ->sum('products.price');
-            return $total;
+            return $this->total;
         }
         return redirect('/login');
     }

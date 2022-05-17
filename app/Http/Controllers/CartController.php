@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 
 
-class CartController implements CartInterfaceController
+class CartController  extends deleteController implements deleteInterfaceController,liskovController
 {
-    /* public $userIdCartItem;
-    public $userIdCartlist;
-    public $userId;*/
-    function addToCart(Request $req){
+    private $userIdCartItem;
+    private $userIdCartlist;
+    private $userId;
+    function add(Request $req){
         if($req->session()->has('user')){
-            $cart= new Cart;
-            $cart->user_id=$req->session()->get('user')['id'];
-            $cart->product_id=$req->product_id;
-            $cart->save();
+            $this->cart= new Cart;
+            $this->cart->user_id=$req->session()->get('user')['id'];
+            $this->cart->product_id=$req->product_id;
+            $this->cart->save();
             return redirect('/');
         }
         else
@@ -33,16 +33,16 @@ class CartController implements CartInterfaceController
     function cartlist(){
         if(Session::has('user')){
             $userIdCartlist=Session::get('user')['id'];
-            $products= DB::table('cart')
+            $this->products= DB::table('cart')
             ->join('products','cart.product_id','=','products.id')
             ->where('cart.user_id',$userIdCartlist)
             ->select('products.*','cart.id as cart_id')
             ->get();
-            return view('cartlist',['products'=>$products]);
+            return view('cartlist',['products'=>$this->products]);
         }
         return redirect('/login');
     }
-    function removeCart($id){
+    function remove($id){
         Cart::destroy($id);
         return redirect('cartlist');
     }

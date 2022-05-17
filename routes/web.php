@@ -31,10 +31,11 @@ Route::post('/register',[UserController::class,'register']);
 Route::get('/',[ProductController::class,'Home']);
 Route::get('detail/{id}',[ProductController::class,'detail']);
 Route::get('search',[ProductController::class,'search']);
-Route::post('/add_to_cart',[CartController::class,'addToCart']);//(بتستعيها من ريكوست)تاخد البيانات الي جية من الفورم وتحطها في الداتا بيز
+Route::post('/add_to_cart',[CartController::class,'add']);//(بتستعيها من ريكوست)تاخد البيانات الي جية من الفورم وتحطها في الداتا بيز
 Route::get('/cartlist',[CartController::class,'cartlist']);//(بتستعيها من ريكوست)تاخد البيانات الي جية من الفورم وتحطها في الداتا بيز
-Route::get('removecart/{id}',[CartController::class,'removeCart']);
+Route::get('removecart/{id}',[CartController::class,'remove']);
+Route::get('removeOrder/{id}',[OrderController::class,'remove']);
 Route::get('ordernow',[OrderController::class,'ordernow']);
-Route::post("orderplace",[OrderController::class,'orderPlace']);
+Route::post("orderplace",[OrderController::class,'add']);
 Route::get('myorders',[OrderController::class,'myOrders']);
 

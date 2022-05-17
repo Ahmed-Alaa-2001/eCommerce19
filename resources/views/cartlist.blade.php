@@ -1,3 +1,7 @@
+<?php
+  // Cart::destroy($id);
+    
+?>
 @extends('layout')
 @section("content")
 <div class="custom-product">

@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\session;
 use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 
-interface CartInterfaceController
+interface deleteInterfaceController
 {
-    function addToCart(Request $req);
-    static function cartItem();
-    function cartlist();
-    // function removeCart($id);
+    function remove($id);
 }
