@@ -27,7 +27,7 @@ Route::get('/logout', function () {
 });
 // Route::view('/product','product');
 Route::view('/register','register');
-Route::post('/login',[UserController::class,'login']);//(بتستعيها من ريكوست)تاخد البيانات الي جية من الفورم وتحطها في الداتا بيز
+Route::post('/login',[UserController::class,'login']);
 Route::post('/register',[UserController::class,'register']);
 Route::get('/',[ProductController::class,'Home']);
 Route::get('detail/{id}',[ProductController::class,'detail']);
@@ -39,4 +39,3 @@ Route::get('removeOrder/{id}/{x}',[CartController::class,'aboutDelete']);
 Route::get('ordernow',[OrderController::class,'ordernow']);
 Route::post("orderplace",[OrderController::class,'add']);
 Route::get('myorders',[OrderController::class,'myOrders']);
-

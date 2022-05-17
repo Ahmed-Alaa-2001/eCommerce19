@@ -58,6 +58,6 @@ class CartController extends OrderController implements deleteInterfaceControlle
     }
     function remove($id){
         Cart::destroy($id);
-        // return redirect('cartlist');
+        return redirect('cartlist');
     }
 }
