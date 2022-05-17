@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 
 
-class CartController  extends deleteController implements deleteInterfaceController,liskovController
+class CartController extends OrderController implements deleteInterfaceController,liskovController
 {
     private $userIdCartItem;
     private $userIdCartlist;
@@ -58,6 +58,6 @@ class CartController  extends deleteController implements deleteInterfaceControl
     }
     function remove($id){
         Cart::destroy($id);
-        return redirect('cartlist');
+        // return redirect('cartlist');
     }
 }
